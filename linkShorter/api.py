@@ -24,7 +24,7 @@ redirect_bp = Blueprint('redirect', __name__, url_prefix='/')
 
 @redirect_bp.route('/<link>', methods=['GET'])
 def get_link(link):
-    return redirect(g.redis_client.get(link), 302)
+    return redirect(g.redis_client.get(link).decode(), 302)
 
 
 @bp.before_app_request
